@@ -2,8 +2,8 @@
 
 tim:
   name: tim
-  hashed_password: abcdef
-  salt: abcdef
+  hashed_password: 4bcb7346a040b5ae70a43bcc1ebf2e1b27dd5885
+  salt: salt
 
 two:
   name: wee

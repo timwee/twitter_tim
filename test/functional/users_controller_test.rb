@@ -35,4 +35,8 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to user_path(assigns(:user))
   end
 
+  test "login user" do
+    post :login, :name => "tim", :password => "pword"
+    assert_redirected_to user_url(users(:tim))
+  end
 end

@@ -1,5 +1,6 @@
 TAGS
 db/sphinx/*
+db/*sqlite3
 log/searchd.*.pid
 log/*.log
 log/*.output
@@ -29,3 +30,4 @@ dictionaries
 public/tmp_revenge_rates_in_production.sql.gz
 *~
 .#*
+#*

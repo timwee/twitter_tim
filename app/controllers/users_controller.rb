@@ -41,11 +41,9 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        puts "able to save"
         flash[:notice] = 'User was successfully created.'
         format.html { redirect_to(@user) }
       else
-        puts "was not able to test"
         format.html { render :action => "new" }
       end
     end
@@ -66,4 +64,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def login
+    if request.post?
+      @user = User.authenticate(params[:name], params[:password])
+      if @user
+        session[:user_id] = @user.id
+        redirect_to(@user)
+      else
+        flash.now[:notice] = "Invalid user/password combination"
+      end
+
+    end
+  end
 end
