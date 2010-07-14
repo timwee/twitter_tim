@@ -1,0 +1,28 @@
+<h1>Register</h1>
+
+<% form_for(@user) do |f| %>
+  <%= f.error_messages %>
+
+  <fieldset>
+    <legend> Your Vitals</legend>
+    <div>
+      <%= f.label :name %>:
+      <%= f.text_field :name, :size => 40 %>
+    </div>
+    <div>
+      <%= f.label :password, 'Password' %>:
+      <%= f.password_field :password, :size => 40 %>
+    </div>
+    <div>
+      <%= f.label :password_confirmation, 'Confirm' %>:
+      <%= f.password_field :password_confirmation, :size => 40 %>
+    </div>
+
+    <div>
+      <%= f.submit "Register", :class => "submit" %>     
+    </div>
+  </fieldset>
+
+<% end %>
+
+<%= link_to 'Back', users_path %>

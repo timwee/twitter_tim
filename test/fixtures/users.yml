@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+tim:
+  name: tim
+  hashed_password: abcdef
+  salt: abcdef
+
+two:
+  name: wee
+  hashed_password: aaaaa
+  salt: aaaaa
