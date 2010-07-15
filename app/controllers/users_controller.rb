@@ -13,7 +13,9 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     @user = User.find(params[:id])
-
+    @tweet = Tweet.new
+    @tweet.user = @user
+    @tweets = @user.tweets
     respond_to do |format|
       format.html # show.html.erb
     end

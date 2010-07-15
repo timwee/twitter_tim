@@ -1,6 +1,8 @@
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
+  has_many :tweets
+
   validates_presence_of     :name
   validates_uniqueness_of   :name
 
@@ -32,7 +34,7 @@ class User < ActiveRecord::Base
     user
   end
 
-#  private
+  private
   def password_non_blank
     errors.add(:password, "Missing password") if hashed_password.blank?
   end

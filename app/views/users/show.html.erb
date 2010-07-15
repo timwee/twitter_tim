@@ -3,16 +3,17 @@
   <%=h @user.name %>
 </p>
 
-<p>
-  <b>Hashed password:</b>
-  <%=h @user.hashed_password %>
-</p>
+<% form_for :tweet, @tweet, :url => tweet_url(@user.id) do |f| %>
+  <%= f.text_area :body, :rows => 2, :cols => 40 %>
+  <%= f.submit "Tweet", :class => "submit" %>
+<% end %>
 
-<p>
-  <b>Salt:</b>
-  <%=h @user.salt %>
-</p>
+<div id="tweets">
+  <% for tweet in @tweets %>
+    <div class="tweet">
+      <%=h tweet.body %>
+    </div>
+  <% end %>
+</div>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
