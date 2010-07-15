@@ -73,7 +73,12 @@ class UsersController < ApplicationController
       else
         flash.now[:notice] = "Invalid user/password combination"
       end
-
     end
+  end
+
+  def logout
+    session[:user_id] = nil
+    flash[:notice] = "Logged Out"
+    redirect_to(:action => "login")
   end
 end

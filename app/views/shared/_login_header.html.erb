@@ -1,0 +1,5 @@
+<% if session[:user_id] %>
+  <%= link_to 'Logout', logout_url %>
+<% else %>
+  <%= link_to 'Login', login_url %>
+<% end %>
