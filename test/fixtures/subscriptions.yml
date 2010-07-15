@@ -1,0 +1,11 @@
+tim_to_wee:
+  user_id: 1
+  friend_id: 2
+
+wee_to_three:
+  user_id: 2
+  friend_id: 3
+
+wee_to_tim:
+  user_id: 2
+  friend_id: 3

@@ -3,9 +3,16 @@
   <%=h @user.name %>
 </p>
 
-<% form_for :tweet, @tweet, :url => tweet_url(@user.id) do |f| %>
-  <%= f.text_area :body, :rows => 2, :cols => 40 %>
-  <%= f.submit "Tweet", :class => "submit" %>
+<% if user_logged_in? %>
+  <% form_for :tweet, @tweet, :url => tweet_url(@user.id) do |f| %>
+    <%= f.text_area :body, :rows => 2, :cols => 40 %>
+    <%= f.submit "Tweet", :class => "submit" %>
+  <% end %>
 <% end %>
-
+<% if is_current_user? %>
+  This is you!
+ <% elsif user_logged_in? %>
+  <%= link_to "Follow", subscriptions_path(:friend_id => user, :friend_name => user), :method => :post %>
+ <% end %>
 <%= render :partial => "user_tweets", :layout => "tweets", :locals => { :tweets => @tweets } %>
+

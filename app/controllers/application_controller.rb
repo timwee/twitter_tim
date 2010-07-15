@@ -7,4 +7,23 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+
+  before_filter :set_user
+
+  def authorize
+    unless !session[:user_id].nil?
+      session[:original_uri] = request.request_uri
+      flash[:notice] = "Please Log in"
+      redirect_to login_url
+    end
+  end
+
+  private
+  def set_user
+    current_id = session[:user_id]
+    if current_id
+      @current_user = User.find(current_id)
+    end
+
+  end
 end

@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
   test "test user with no name" do
     u = User.new
     u.password = "password"
@@ -22,6 +21,10 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "test find existing user" do
-    assert_equal 2, User.all.count
+    assert_equal 3, User.all.count
+  end
+
+  test "test user followers" do
+    assert_equal 1, users(:tim).friends.length
   end
 end

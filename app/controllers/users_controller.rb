@@ -25,7 +25,6 @@ class UsersController < ApplicationController
   # GET /users/new.xml
   def new
     @user = User.new
-
     respond_to do |format|
       format.html # new.html.erb
     end
@@ -40,7 +39,6 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
-
     if @user.save
       flash[:notice] = 'User was successfully created.'
       redirect_to(@user)
@@ -53,14 +51,13 @@ class UsersController < ApplicationController
   # PUT /users/1.xml
   def update
     @user = User.find(params[:id])
-
     if @user.update_attributes(params[:user])
       flash[:notice] = 'User was successfully updated.'
       redirect_to(@user)
     else
       render :action => "edit"
     end
-    end
+
   end
 
   def login
