@@ -1,0 +1,15 @@
+
+<ol id="tweets">
+  <% for tweet in tweets %>
+    <li class="tweet">
+      <span class="status-body">
+        <%=h tweet.body %>
+      </span>
+      <span class="meta">
+        <%= distance_of_time_in_words(Time.now, tweet.created_at, false) %>
+      </span>
+    </li>
+  <% end %>
+</ol>
+
+

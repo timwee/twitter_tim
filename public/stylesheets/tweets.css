@@ -1,0 +1,22 @@
+ol#tweets {
+  list-style: none outside none;
+  margin-left: 0px;
+  display: block;
+  width: 425px;
+  overflow: visible;
+  font-size: 14px;
+}
+
+li.tweet {
+  border-bottom: 1px solid #EEEEEE;
+  line-height:16px;
+  padding: 10px 0 8px;
+  position: relative;
+}
+
+span.meta {
+  display: block;
+  font-size: 11px;
+  margin-top: 2px;
+  margin-left: 0px;
+}

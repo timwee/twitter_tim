@@ -41,13 +41,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
-    respond_to do |format|
-      if @user.save
-        flash[:notice] = 'User was successfully created.'
-        format.html { redirect_to(@user) }
-      else
-        format.html { render :action => "new" }
-      end
+    if @user.save
+      flash[:notice] = 'User was successfully created.'
+      redirect_to(@user)
+    else
+      render :action => "new"
     end
   end
 
@@ -56,13 +54,12 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-        flash[:notice] = 'User was successfully updated.'
-        format.html { redirect_to(@user) }
-      else
-        format.html { render :action => "edit" }
-      end
+    if @user.update_attributes(params[:user])
+      flash[:notice] = 'User was successfully updated.'
+      redirect_to(@user)
+    else
+      render :action => "edit"
+    end
     end
   end
 

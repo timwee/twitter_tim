@@ -1,9 +1,9 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  body: MyString
-  user: 
+  body: hi
+  user: tim
 
 two:
-  body: MyString
-  user: 
+  body: hello
+  user: tim

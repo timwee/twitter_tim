@@ -8,12 +8,4 @@
   <%= f.submit "Tweet", :class => "submit" %>
 <% end %>
 
-<div id="tweets">
-  <% for tweet in @tweets %>
-    <div class="tweet">
-      <%=h tweet.body %>
-    </div>
-  <% end %>
-</div>
-
-
+<%= render :partial => "user_tweets", :layout => "tweets", :locals => { :tweets => @tweets } %>
