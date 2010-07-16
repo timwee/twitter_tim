@@ -3,7 +3,7 @@ class TimelineController < ApplicationController
 
   def index
     @user = @current_user
-    @tweets = @user.tweets
+    @tweets = @user.subscription_timeline
   end
 
 end

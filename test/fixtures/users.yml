@@ -8,13 +8,13 @@ tim:
 
 wee:
   name: wee
-  hashed_password: aaaaa
-  salt: aaaaa
+  hashed_password: 4bcb7346a040b5ae70a43bcc1ebf2e1b27dd5885
+  salt: salt
   id: 2
 
 three:
   name: three
-  hashed_password: bbbb
-  salt: bbb
+  hashed_password: 4bcb7346a040b5ae70a43bcc1ebf2e1b27dd5885
+  salt: salt
   id: 3
 

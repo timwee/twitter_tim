@@ -4,7 +4,8 @@ class TweetsController < ApplicationController
   def create
     current_user = User.find(session[:user_id])
     @tweet = current_user.tweets.build(params[:tweet])
-
+    puts @tweet.user
+    puts @tweet.body
     if !@tweet.save
       flash[:notice] = "Couldn't tweet, please try again"
     end

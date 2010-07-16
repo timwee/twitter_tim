@@ -20,8 +20,8 @@ class UserTest < ActiveSupport::TestCase
     assert u.save
   end
 
-  test "test find existing user" do
-    assert_equal 3, User.all.count
+  test "login successful" do
+    assert_not_nil User.authenticate("tim", "pword")
   end
 
   test "test user # followers" do
@@ -32,4 +32,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal "wee", users(:tim).friends.first.name
   end
 
+  test "test timeline" do
+    assert_equal 3, users(:tim).subscription_timeline.count
+  end
 end

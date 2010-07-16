@@ -18,6 +18,11 @@ class User < ActiveRecord::Base
     @password
   end
 
+  def subscription_timeline(offset=0)
+    friend_ids = subscriptions.map { |s| s.friend_id }
+    Tweet.find(:all, :conditions=> ["user_id in (:user_ids)", { :user_ids => friend_ids << id }], :limit => 10, :offset => offset)
+  end
+
   def num_followers
     Subscription.find_all_by_friend_id(id).count
   end
@@ -49,6 +54,7 @@ class User < ActiveRecord::Base
     user = self.find_by_name(name)
     if user
       expected_password = encrypted_password(password, user.salt)
+      logger.error expected_password
       if user.hashed_password != expected_password
         user = nil
       end
@@ -56,7 +62,7 @@ class User < ActiveRecord::Base
     user
   end
 
-  private
+#  private
   def password_non_blank
     errors.add(:password, "Missing password") if hashed_password.blank?
   end
