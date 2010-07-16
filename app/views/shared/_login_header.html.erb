@@ -1,4 +1,5 @@
 <% if user_logged_in? %>
+  <%= link_to 'Timeline', timeline_url %> | 
   <%= link_to 'Logout', logout_url %>
 <% else %>
   <%= link_to 'Login', login_url %>
