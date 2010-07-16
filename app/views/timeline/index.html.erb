@@ -5,16 +5,12 @@
       <%=h @user.name %>
     </p>
 
-    <!-- helper? -->
-    <% if is_current_user? @user %>
-      This is you!
-    <% elsif user_logged_in? %>             
-      <% if following? @user %>
-        Following!
-      <% else %>
-        <%= link_to "Follow", subscriptions_path(:friend_id => @user.id, :friend_name => @user.name), :method => :post %>
-      <% end %>
+
+    <% form_for :tweet, @tweet, :url => tweet_url(@user.id) do |f| %>
+      <%= f.text_area :body, :rows => 2, :cols => 40 %>
+      <%= f.submit "Tweet", :class => "submit" %>
     <% end %>
+
     
     <%= render :partial => "shared/tweets_timeline", :layout => "shared/tweets", :locals => { :tweets => @tweets } %>
   </div>
@@ -22,3 +18,4 @@
     <%= render :partial => "shared/user_info", :layout => "shared/user_info_layout", :locals => { :user => @user} %>
   </div>
 </div>
+

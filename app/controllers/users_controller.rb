@@ -64,7 +64,7 @@ class UsersController < ApplicationController
       @user = User.authenticate(params[:name], params[:password])
       if @user
         session[:user_id] = @user.id
-        redirect_to(@user)
+        redirect_to timeline_url
       else
         flash.now[:notice] = "Invalid user/password combination"
       end
