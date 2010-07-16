@@ -6,7 +6,12 @@
         <%=h tweet.body %>
       </span>
       <span class="meta">
-        <%= distance_of_time_in_words(Time.now, tweet.created_at, false) %> ago
+        <%= distance_of_time_in_words(Time.now, tweet.created_at, false) %> ago by
+        <% if is_current_user? tweet.user %>
+          you
+        <% else %>
+          <%= link_to(tweet.username, user_url(tweet.user)) %>
+        <% end %>
       </span>
     </li>
   <% end %>
