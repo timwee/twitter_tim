@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_many :tweets
   has_many :subscriptions
   has_many :friends, :through => :subscriptions
+  has_many :follower_relations, :class_name => "Subscription", :foreign_key => "friend_id"
+  has_many :followers, :through => :follower_relations, :source => :user
 
   validates_presence_of     :name
   validates_uniqueness_of   :name
@@ -24,14 +26,9 @@ class User < ActiveRecord::Base
   end
 
   def num_followers
-    Subscription.find_all_by_friend_id(id).count
+    followers.count
   end
 
-  def followers
-    Subscription.find_all_by_friend_id(id).map do |relation|
-      User.find_by_id(relation.user_id)
-    end
-  end
 
   def following
     subscriptions.map do |relation|
