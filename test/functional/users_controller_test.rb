@@ -17,7 +17,7 @@ class UsersControllerTest < ActionController::TestCase
       post :create, :user => { :name => "mots", :password => "pp"}
     end
 
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to timeline_url
   end
 
   test "should show user" do
@@ -37,6 +37,6 @@ class UsersControllerTest < ActionController::TestCase
 
   test "login user" do
     post :login, :name => "tim", :password => "pword"
-    assert_redirected_to user_url(users(:tim))
+    assert_redirected_to timeline_url
   end
 end

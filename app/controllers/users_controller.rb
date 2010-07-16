@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   # GET /users.xml
   def index
     @users = User.all
-
     respond_to do |format|
       format.html # index.html.erb
     end
@@ -41,7 +40,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       flash[:notice] = 'User was successfully created.'
-      redirect_to(@user)
+      redirect_to timeline_url
     else
       render :action => "new"
     end

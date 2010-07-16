@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :subscriptions
 
   map.resources :users, :except => [:destroy] do |user|
-    user.resources :tweets, :except => [:destroy, :edit]
+    user.resources :tweets, :except => [:destroy, :edit, :show, :index]
   end
   map.timeline "/timeline", :controller => "timeline", :conditions => { :method => :get }
   map.tweet "/users/:user_id/tweet", :controller => "tweets", :action => "create", :conditions => {:method => :post}

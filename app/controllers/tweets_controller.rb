@@ -1,11 +1,6 @@
 
 class TweetsController < ApplicationController
-  def show
-  end
-
-  def index
-  end
-
+  before_filter :authorize
   def create
     current_user = User.find(session[:user_id])
     @tweet = current_user.tweets.build(params[:tweet])
