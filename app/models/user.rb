@@ -28,6 +28,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  def following
+    subscriptions.map do |relation|
+      User.find_by_id(relation.friend_id)
+    end
+  end
+
   def is_following?(user_id)
     Subscription.exists?(:user_id => id, :friend_id => user_id)
   end

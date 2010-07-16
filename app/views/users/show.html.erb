@@ -10,7 +10,8 @@
       This is you!
     <% elsif user_logged_in? %>             
       <% if following? @user %>
-        Following!
+        Following!<br />
+        <%= link_to "Unfollow", subscription_path(:friend_id => @user.id, :friend_name => @user.name), :method => :delete %>
       <% else %>
         <%= link_to "Follow", subscriptions_path(:friend_id => @user.id, :friend_name => @user.name), :method => :post %>
       <% end %>

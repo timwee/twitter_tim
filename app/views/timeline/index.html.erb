@@ -5,12 +5,7 @@
       <%=h @user.name %>
     </p>
 
-
-    <% form_for :tweet, @tweet, :url => tweet_url(@user.id) do |f| %>
-      <%= f.text_area :body, :rows => 2, :cols => 40 %>
-      <%= f.submit "Tweet", :class => "submit" %>
-    <% end %>
-
+    <%= render :partial => "tweet/message_form", :locals => { :tweet => @tweet, :user => @user} %>
     
     <%= render :partial => "shared/tweets_timeline", :layout => "shared/tweets", :locals => { :tweets => @tweets } %>
   </div>

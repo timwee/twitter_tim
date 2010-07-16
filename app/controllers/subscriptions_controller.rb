@@ -11,10 +11,10 @@ class SubscriptionsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   @subscription = Subscription.find(params[:id])
-  #   @subscription.destroy
-  #   flash[:notice] = "Successfully destroyed subscription."
-  #   redirect_to root_url
-  # end
+  def destroy
+    @subscription = @current_user.subscriptions.find_by_friend_id(params[:friend_id])
+    @subscription.destroy
+    flash[:notice] = "Successfully unfollowed #{params[:friend_name]}"
+    redirect_to root_url
+  end
 end

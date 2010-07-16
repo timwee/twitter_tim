@@ -5,6 +5,20 @@
     <% for follower in user.followers %>
       <li class="follower">
         <%=h follower.name %>
+        <%= link_to "view", user_url(follower) %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div>
+  <span>Following <%=h user.subscriptions.count %> </span>
+  <span class="clear" />
+  <ul id="followings">
+    <% for followed in user.following %>
+      <li class="followed">
+        <%=h followed.name %>
+        <%= link_to "view", user_url(followed) %>
       </li>
     <% end %>
   </ul>
