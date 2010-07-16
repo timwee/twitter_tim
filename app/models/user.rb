@@ -18,6 +18,20 @@ class User < ActiveRecord::Base
     @password
   end
 
+  def num_followers
+    Subscription.find_all_by_friend_id(id).count
+  end
+
+  def followers
+    Subscription.find_all_by_friend_id(id).map do |relation|
+      User.find_by_id(relation.user_id)
+    end
+  end
+
+  def is_following?(user_id)
+    Subscription.exists?(:user_id => id, :friend_id => user_id)
+  end
+
   def password=(pwd)
     @password = pwd
     return if pwd.blank?

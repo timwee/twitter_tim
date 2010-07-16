@@ -1,18 +1,31 @@
-<p>
-  <b>Name:</b>
-  <%=h @user.name %>
-</p>
+<div id="container">
+  <div class="left-pane">
+    <p>
+      <b>Name:</b>
+      <%=h @user.name %>
+    </p>
 
-<% if user_logged_in? %>
-  <% form_for :tweet, @tweet, :url => tweet_url(@user.id) do |f| %>
-    <%= f.text_area :body, :rows => 2, :cols => 40 %>
-    <%= f.submit "Tweet", :class => "submit" %>
-  <% end %>
-<% end %>
-<% if is_current_user? %>
-  This is you!
- <% elsif user_logged_in? %>
-  <%= link_to "Follow", subscriptions_path(:friend_id => user, :friend_name => user), :method => :post %>
- <% end %>
-<%= render :partial => "user_tweets", :layout => "tweets", :locals => { :tweets => @tweets } %>
+    <% if user_logged_in? %>
+      <% form_for :tweet, @tweet, :url => tweet_url(@user.id) do |f| %>
+        <%= f.text_area :body, :rows => 2, :cols => 40 %>
+        <%= f.submit "Tweet", :class => "submit" %>
+      <% end %>
+    <% end %>
 
+    <!-- helper? -->
+    <% if is_current_user? @user %>
+      This is you!
+    <% elsif user_logged_in? %>             
+      <% if following? @user %>
+        Following!
+      <% else %>
+        <%= link_to "Follow", subscriptions_path(:friend_id => @user.id, :friend_name => @user.name), :method => :post %>
+      <% end %>
+    <% end %>
+    
+    <%= render :partial => "user_tweets", :layout => "tweets", :locals => { :tweets => @tweets } %>
+  </div>
+  <div class="right-pane">
+    <%= render :partial => "user_info", :layout => "user_info_layout", :locals => { :user => @user} %>
+  </div>
+</div>

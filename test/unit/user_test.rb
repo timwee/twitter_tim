@@ -24,7 +24,12 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 3, User.all.count
   end
 
-  test "test user followers" do
+  test "test user # followers" do
     assert_equal 1, users(:tim).friends.length
   end
+
+  test "test user followers" do
+    assert_equal "wee", users(:tim).friends.first.name
+  end
+
 end

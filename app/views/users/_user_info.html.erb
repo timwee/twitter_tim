@@ -1,0 +1,11 @@
+<div>
+  <span><%=h user.num_followers %> Followers:</span>
+  <span class="clear" />
+  <ul id="followers">
+    <% for follower in user.followers %>
+      <li class="follower">
+        <%=h follower.name %>
+      </li>
+    <% end %>
+  </ul>
+</div>
