@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class TimelineControllerTest < ActionController::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  test "timeline for tim" do
+    session[:user_id] = users(:tim).id
+    get :index
+    assert_response :success
   end
 end
