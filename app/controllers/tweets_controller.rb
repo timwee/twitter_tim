@@ -1,3 +1,4 @@
+
 class TweetsController < ApplicationController
   def show
   end
@@ -13,7 +14,7 @@ class TweetsController < ApplicationController
       flash[:notice] = "Couldn't tweet, please try again"
     end
 
-    redirect_to(current_user)
+    redirect_to timeline_url
   end
 
 end
