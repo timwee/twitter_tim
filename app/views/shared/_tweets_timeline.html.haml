@@ -1,0 +1,3 @@
+%ol#tweets
+  - for tweet in tweets
+    = render :partial => "tweet/show", :locals => { :tweet => tweet }

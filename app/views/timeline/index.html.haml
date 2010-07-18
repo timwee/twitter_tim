@@ -1,0 +1,12 @@
+#container
+  .left-pane
+    %p
+      %b Name:
+      = @user.name
+    = render :partial => "tweet/message_form", :locals => { :tweet => @tweet, :user => @user}
+    = render :partial => "shared/tweets_timeline", :locals => { :tweets => @tweets } 
+  .right-pane
+    = render :partial => "shared/user_info", :layout => "shared/user_info_layout", :locals => { :user => @user}
+  
+    
+= javascript_include_tag "timeline"

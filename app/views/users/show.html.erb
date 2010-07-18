@@ -17,7 +17,7 @@
       <% end %>
     <% end %>
     
-    <%= render :partial => "shared/tweets_timeline", :layout => "shared/tweets", :locals => { :tweets => @tweets } %>
+    <%= render :partial => "shared/tweets_timeline", :locals => { :tweets => @tweets } %>
   </div>
   <div class="right-pane">
     <%= render :partial => "shared/user_info", :layout => "shared/user_info_layout", :locals => { :user => @user} %>

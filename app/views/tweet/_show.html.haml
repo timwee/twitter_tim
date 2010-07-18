@@ -1,0 +1,19 @@
+%li.tweet
+  %span.status-body= tweet.body
+  %span.meta= distance_of_time_in_words(Time.now, tweet.created_at, false)
+  ago by
+  - if is_current_user? tweet.user
+    you
+  - else
+    = link_to tweet.username, user_url(tweet.user)
+
+
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-class SubscriptionsController < ApplicationController
+ class SubscriptionsController < ApplicationController
   before_filter :authorize
   def create
     @subscription = @current_user.subscriptions.build(:friend_id => params[:friend_id])

@@ -1,2 +1,17 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+$(document).ajaxSend(function(event, request, settings) {
+    if ( settings.type == 'post' ) {
+        settings.data = (settings.data ? settings.data + "&" : "")
+                + "authenticity_token=" + encodeURIComponent( AUTH_TOKEN );
+        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    }
+});
+
+$.ajaxSettings.accepts.html = $.ajaxSettings.accepts.script;
+
+jQuery.fn.submitWithAjax = function() {
+  this.submit(function() {
+    $.post(this.action, $(this).serialize(), null, "script");
+    return false;
+  })
+  return this;
+};
